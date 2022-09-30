@@ -18,7 +18,7 @@ import tools.MyTool;
  */
 public class MenuManagement {
     public static void dealerManagement(LogIn logInObj) throws IOException{
-          System.out.println("hello acc-1");
+          System.out.println("HELLO DEALER MANAGER");
             String[] options = {"Add new dealer", "Search a dealer", "remove a dealer", "Update a dealer", "Print all dealers", "Print Un-continuing dealers", "Print Continuing dealers", "Write to file"};
             Menu menu = new Menu(options);
             DealerList dList = new DealerList(logInObj);
@@ -63,7 +63,7 @@ public class MenuManagement {
             System.out.println("Finish");
     }
     public static void deliveriManagement(LogIn logInObj) throws IOException{
-          System.out.println("hello acc-2");
+          System.out.println("HELLO DELIVERIES MANAGER");
             String[] options = {"Add new deliveri", "Search a deliveri", "remove a deliveri", "Update a deliveri", "Print all deliveri", "Print Un-continuing deliveri", "Print Continuing deliveri", "Write to file"};
             Menu menu = new Menu(options);
             DeliveriList dList = new DeliveriList(logInObj);
@@ -111,7 +111,7 @@ public class MenuManagement {
     
     
     public static void accountManagement(LogIn logInObj) throws IOException{
-          System.out.println("hello boss");
+          System.out.println("HELLO ACCOUNT MANAGER");
             String[] options = {"Add new Account", "Search a Account by accName", "Remove a Account by accName", "Update Account by accName", "Print all Account","Save file"};
             Menu menu = new Menu(options);
             AccountList aList = new AccountList(logInObj);
