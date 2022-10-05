@@ -1,5 +1,5 @@
 
-package Controller;
+package Model;
 import entity.Account;
 import Model.Config;
 import java.io.IOException;

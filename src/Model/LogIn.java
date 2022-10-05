@@ -1,7 +1,5 @@
 package Model;
 
-import Controller.AccountChecker;
-import Controller.AccountChecker;
 import Controller.DealerList;
 import entity.Account;
 import View.Menu;
@@ -9,6 +7,7 @@ import View.MenuManagement;
 import static View.MenuManagement.dealerManagement;
 import static View.MenuManagement.deliveriManagement;
 import static View.MenuManagement.accountManagement;
+import static View.MenuManagement.inputAccount;
 import java.io.IOException;
 import tools.MyTool;
 
@@ -19,15 +18,6 @@ public class LogIn {
 
     public LogIn(Account acc) {
         this.acc = acc;
-    }
-
-    public static Account inputAccount() {
-        System.out.println("--------------Login------------");
-        String accName = MyTool.readNonBlank("Enter your account name: ");
-        String pwd = MyTool.readNonBlank("Enter your passWord");
-        String role = MyTool.readNonBlank("Enter your role");
-        Account LoginAccount = new Account(accName, pwd, role);
-        return LoginAccount;
     }
 
     public Account getAcc() {

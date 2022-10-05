@@ -9,6 +9,7 @@ import Controller.AccountList;
 import Controller.DealerList;
 import Controller.DeliveriList;
 import Model.LogIn;
+import entity.Account;
 import java.io.IOException;
 import tools.MyTool;
 
@@ -149,6 +150,16 @@ public class MenuManagement {
                 }
             } while (choice > 0 && choice < menu.size());
             System.out.println("Finish");
+    }
+    
+    
+        public static Account inputAccount() {
+        System.out.println("--------------Login------------");
+        String accName = MyTool.readNonBlank("Enter your account name: ");
+        String pwd = MyTool.readNonBlank("Enter your passWord");
+        String role = MyTool.readNonBlank("Enter your role");
+        Account LoginAccount = new Account(accName, pwd, role);
+        return LoginAccount;
     }
     
 }
