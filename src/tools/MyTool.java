@@ -1,6 +1,6 @@
 package tools;
-import Controller.DealerList;
-import Model.LogIn;
+import Model.DealerList;
+import Controller.LogIn;
 import View.Menu;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -65,7 +65,7 @@ public class MyTool {
         do {            
             System.out.println(message + ": ");
             input = sc.nextLine().trim();
-        } while (input.isEmpty());
+        } while (input.isEmpty() ||input.contains(" "));
         return input;
     }
     

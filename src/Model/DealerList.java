@@ -1,9 +1,8 @@
-package Controller;
+package Model;
 
-import Model.LogIn;
-import entity.Deliveri;
+import Controller.LogIn;
+import entity.Dealer;
 import Model.Config;
-import entity.Deliveri;
 import java.io.IOException;
 import java.util.AbstractList;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import tools.MyTool;
 
-public class DeliveriList extends ArrayList<Deliveri> {
+public class DealerList extends ArrayList<Dealer> {
 
     Scanner sc = new Scanner(System.in);
     LogIn logInObj = null;
@@ -19,28 +18,28 @@ public class DeliveriList extends ArrayList<Deliveri> {
     private String dataFile = "";
     boolean changed = false; // whether data in the list changed or not 
 
-    public DeliveriList(LogIn loginObj) {
+    public DealerList(LogIn loginObj) {
         super();
         this.logInObj = loginObj;
     }
 
-    private void loadDeliveriFromFile() throws IOException {
-        List<String> readDeliveri = MyTool.readLinesFromFile(dataFile);
-        for (String element : readDeliveri) {
-            Deliveri newDeliveri = new Deliveri(element);
-            this.add(newDeliveri);
+    private void loadDealerFromFile() throws IOException {
+        List<String> readDealer = MyTool.readLinesFromFile(dataFile);
+        for (String element : readDealer) {
+            Dealer newDealer = new Dealer(element);
+            this.add(newDealer);
         }
     }
 
     public void iniWithFile() throws IOException {
         Config cR = new Config();
-        dataFile = cR.getDeliveryFile();
-        loadDeliveriFromFile();
+        dataFile = cR.getDealerFile();
+        loadDealerFromFile();
     }
 
-    public DeliveriList getContinuingList() {
-        DeliveriList result = new DeliveriList(logInObj);
-        for (Deliveri thi : this) {
+    public DealerList getContinuingList() {
+        DealerList result = new DealerList(logInObj);
+        for (Dealer thi : this) {
             if (thi.isContinuing() == true) {
                 result.add(thi);
             }
@@ -48,9 +47,9 @@ public class DeliveriList extends ArrayList<Deliveri> {
         return result;
     }
 
-    public DeliveriList getUnContinuingList() {
-        DeliveriList result = new DeliveriList(logInObj);
-        for (Deliveri thi : this) {
+    public DealerList getUnContinuingList() {
+        DealerList result = new DealerList(logInObj);
+        for (Dealer thi : this) {
             if (thi.isContinuing() == false) {
                 result.add(thi);
             }
@@ -58,7 +57,7 @@ public class DeliveriList extends ArrayList<Deliveri> {
         return result;
     }
 
-    private int searchDeliveri(String ID) {
+    private int searchDealer(String ID) {
         int count = this.size();
         for (int i = 0; i < count; i++) {
             if (this.get(i).getID().endsWith(ID)) {
@@ -68,10 +67,10 @@ public class DeliveriList extends ArrayList<Deliveri> {
         return -1;
     }
 
-    public void searchDeliveri() {
-        System.out.println("Enter ID to find Deliveri");
-        String IdDeliveri = sc.nextLine().toUpperCase();
-        int pos = searchDeliveri(IdDeliveri);
+    public void searchDealer() {
+        System.out.println("Enter ID to find Dealer");
+        String IdDealer = sc.nextLine().toUpperCase();
+        int pos = searchDealer(IdDealer);
         if (pos < 0) {
             System.out.println("Not Found");
         } else {
@@ -79,36 +78,36 @@ public class DeliveriList extends ArrayList<Deliveri> {
         }
     }
 
-    public void addDeliveri() {
+    public void addDealer() {
         String ID;
-        String name; // deliveri's name
-        String addr; // deliveri's address
+        String name; // dealer's name
+        String addr; // dealer's address
         String phone; // 9 or 11 digits
         boolean continuing;
         int pos;
         do {
-            ID = MyTool.readpattern("ID of new deliveri", Deliveri.ID_FORMAT);
+            ID = MyTool.readpattern("ID of new dealer", Dealer.ID_FORMAT);
             ID = ID.toUpperCase();
-            pos = searchDeliveri(ID);
-            if (pos >= 0) {
+            pos = searchDealer(ID);
+            if (pos > 0) {
                 System.out.println("ID is duplicated");
             }
         } while (pos >= 0);
-        name = MyTool.readNonBlank("Name of new deliveri: ");
-        addr = MyTool.readNonBlank("Address of new deliveri: ");
-        phone = MyTool.readpattern("Phone number: ", Deliveri.PHONE_FORMAT);
-        continuing = true; // default value for new deliveri
-        Deliveri d = new Deliveri(ID, name, addr, phone, continuing);
+        name = MyTool.readNonBlank("Name of new dealer: ").toUpperCase();
+        addr = MyTool.readNonBlank("Address of new dealer: ");
+        phone = MyTool.readpattern("Phone number: ", Dealer.PHONE_FORMAT);
+        continuing = true; // default value for new dealer
+        Dealer d = new Dealer(ID, name, addr, phone, continuing);
         this.add(d);
-        System.out.println("New Deliveri has been added");
+        System.out.println("New dealer has been added");
         changed = true;
     }
 
-    public void removeDeliveri() {
+    public void removeDealer() {
         int pos;
-        System.out.println("Enter ID to remove Deliveri");
-        String IdDeliveri = sc.nextLine().toUpperCase();
-        pos = searchDeliveri(IdDeliveri);
+        System.out.println("Dealer's ID needs updating: ");
+        String ID = MyTool.sc.nextLine().toUpperCase();
+        pos = searchDealer(ID);
         if (pos < 0) {
             System.out.println("Not Found");
         } else {
@@ -118,14 +117,14 @@ public class DeliveriList extends ArrayList<Deliveri> {
         }
     }
 
-    public void updateDeliveri() {
-        System.out.println("Deliveri's ID needs updating: ");
+    public void updateDealer() {
+        System.out.println("Dealer's ID needs updating: ");
         String ID = MyTool.sc.nextLine().toUpperCase();
-        int pos = searchDeliveri(ID);
+        int pos = searchDealer(ID);
         if (pos < 0) {
-            System.out.println("Deliveri " + ID + " Not Found");
+            System.out.println("Dealer " + ID + " Not Found");
         } else {
-            Deliveri d = this.get(pos);
+            Dealer d = this.get(pos);
             String newName = ""; // update name
             System.out.println("New name, enter for omitting");
             newName = MyTool.sc.nextLine().trim().toUpperCase();
@@ -147,29 +146,31 @@ public class DeliveriList extends ArrayList<Deliveri> {
                 d.setPhone(phone);
                 changed = true;
             }
+            d.setContinuing(true);
+            System.out.println("updated");
         }
 
     }
 
-    public void printAllDeliveris() {
+    public void printAllDealers() {
         if (this.isEmpty()) {
             System.out.println("Empty List!");
         } else {
-            for (Deliveri thi : this) {
+            for (Dealer thi : this) {
                 System.out.println(thi.toString());
             }
         }
     }
 
-    public void printContinuingDeliveris() {
-        this.getContinuingList().printAllDeliveris();
+    public void printContinuingDealers() {
+        this.getContinuingList().printAllDealers();
     }
 
-    public void printUnContinuingDeliveris() {
-        this.getUnContinuingList().printAllDeliveris();
+    public void printUnContinuingDealers() {
+        this.getUnContinuingList().printAllDealers();
     }
 
-    public void writeDeliveriToFile() throws IOException {
+    public void writeDealerToFile() throws IOException {
         if (changed) {
             MyTool.writeFile(dataFile, this);
             changed = false;

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package Controller;
 
-import Controller.AccountList;
-import Controller.DealerList;
-import Controller.DeliveriList;
-import Model.LogIn;
+import Model.AccountList;
+import Model.DealerList;
+import Model.DeliveriList;
+import View.Menu;
 import entity.Account;
 import java.io.IOException;
 import tools.MyTool;
@@ -125,7 +125,7 @@ public class MenuManagement {
                         aList.addAccount();
                         break;
                     case 2:
-                        aList.searchDealer();
+                        aList.searchAccount();
                         ;
                         break;
                     case 3:

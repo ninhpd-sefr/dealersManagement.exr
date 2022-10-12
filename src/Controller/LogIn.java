@@ -1,13 +1,14 @@
-package Model;
+package Controller;
 
-import Controller.DealerList;
+import Model.DealerList;
+import Model.AccountChecker;
+import Model.AccountChecker;
 import entity.Account;
 import View.Menu;
-import View.MenuManagement;
-import static View.MenuManagement.dealerManagement;
-import static View.MenuManagement.deliveriManagement;
-import static View.MenuManagement.accountManagement;
-import static View.MenuManagement.inputAccount;
+import static Controller.MenuManagement.dealerManagement;
+import static Controller.MenuManagement.deliveriManagement;
+import static Controller.MenuManagement.accountManagement;
+import static Controller.MenuManagement.inputAccount;
 import java.io.IOException;
 import tools.MyTool;
 

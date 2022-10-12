@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Model;
 
+import Controller.LogIn;
 import Model.Config;
-import Model.LogIn;
 import entity.Account;
 import entity.Dealer;
 import java.io.IOException;
@@ -57,7 +57,7 @@ public class AccountList extends ArrayList<Account> {
         return -1;
     }
 
-    public void searchDealer() {
+    public void searchAccount() {
         System.out.println("Enter Name to find Account");
         String name = sc.nextLine();
         int pos = searchAccount(name);
@@ -74,7 +74,7 @@ public class AccountList extends ArrayList<Account> {
         String role = "";
         int pos;
         do {
-            accName = MyTool.readNonBlank("Enter your account name: ");
+            accName = MyTool.readNonBlank("Enter your account name: ").toUpperCase();
             pos = searchAccount(accName);
             if (pos >= 0) {
                 System.out.println("AccName is duplicated");
@@ -109,7 +109,7 @@ public class AccountList extends ArrayList<Account> {
         accName = MyTool.readNonBlank("Enter your account name: ");
         pos = searchAccount(accName);
         if (pos < 0) {
-            System.out.println("Account: " + accName + "not found");
+            System.out.println("Account: " + accName + " not found");
         } else {
             Account acc = this.get(pos);
             String newPwd = "";
