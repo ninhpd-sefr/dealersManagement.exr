@@ -171,6 +171,7 @@ public class DealerList extends ArrayList<Dealer> {
     }
 
     public void writeDealerToFile() throws IOException {
+        System.out.println("Saved");
         if (changed) {
             MyTool.writeFile(dataFile, this);
             changed = false;

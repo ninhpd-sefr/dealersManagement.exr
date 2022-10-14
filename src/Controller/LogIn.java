@@ -17,6 +17,10 @@ public class LogIn {
     private Account acc = null;
     // cóntructor
 
+    public LogIn() {
+    }
+    
+
     public LogIn(Account acc) {
         this.acc = acc;
     }
@@ -25,8 +29,8 @@ public class LogIn {
         return acc;
     }
 
-    public static void main(String[] args) throws IOException {
-        Account acc = null;
+    public void start() throws IOException{
+          Account acc = null;
         boolean cont = false;
         boolean valid = false;
         do {

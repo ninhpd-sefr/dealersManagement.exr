@@ -170,6 +170,7 @@ public class DeliveriList extends ArrayList<Deliveri> {
     }
 
     public void writeDeliveriToFile() throws IOException {
+        System.out.println("Saved");
         if (changed) {
             MyTool.writeFile(dataFile, this);
             changed = false;

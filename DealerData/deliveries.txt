@@ -1,4 +1,3 @@
-D001,NINH,VIN,099999999,true
 D002,Smith,132 street B,456789002,true
 D003,Hellen,32 street C,08123456789,false
 D004,Adelle,43 street D,87123456789,false

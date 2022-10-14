@@ -82,7 +82,7 @@ public class AccountList extends ArrayList<Account> {
         } while (pos >= 0);
 
         pwd = MyTool.readNonBlank("Enter your passWord");
-        role = inputRole("Enter your role");
+        role = MyTool.readNonBlank("Enter your Role");
         Account acc = new Account(accName, pwd, role);
         this.add(acc);
         System.out.println("New account has been added");
@@ -128,8 +128,8 @@ public class AccountList extends ArrayList<Account> {
         }
 
     }
-    
-     public void printAllAccount() {
+
+    public void printAllAccount() {
         if (this.isEmpty()) {
             System.out.println("Empty List!");
         } else {
@@ -138,8 +138,9 @@ public class AccountList extends ArrayList<Account> {
             }
         }
     }
-    
-     public void writeAccountToFile() throws IOException {
+
+    public void writeAccountToFile() throws IOException {
+        System.out.println("Saved");
         if (changed) {
             MyTool.writeFile(dataFile, this);
             changed = false;
