@@ -18,11 +18,8 @@ public class DealerList extends ArrayList<Dealer> {
     private String dataFile = "";
     boolean changed = false; // whether data in the list changed or not 
 
-    public DealerList(LogIn loginObj) {
-        super();
-        this.logInObj = loginObj;
+    public DealerList() {
     }
-
     private void loadDealerFromFile() throws IOException {
         List<String> readDealer = MyTool.readLinesFromFile(dataFile);
         for (String element : readDealer) {
@@ -38,7 +35,7 @@ public class DealerList extends ArrayList<Dealer> {
     }
 
     public DealerList getContinuingList() {
-        DealerList result = new DealerList(logInObj);
+        DealerList result = new DealerList();
         for (Dealer thi : this) {
             if (thi.isContinuing() == true) {
                 result.add(thi);
@@ -48,7 +45,7 @@ public class DealerList extends ArrayList<Dealer> {
     }
 
     public DealerList getUnContinuingList() {
-        DealerList result = new DealerList(logInObj);
+        DealerList result = new DealerList();
         for (Dealer thi : this) {
             if (thi.isContinuing() == false) {
                 result.add(thi);

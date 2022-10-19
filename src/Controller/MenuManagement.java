@@ -19,12 +19,12 @@ import tools.MyTool;
  */
 public class MenuManagement {
 
-    public static void dealerManagement(LogIn logInObj) throws IOException {
+    public static void dealerManagement() throws IOException {
         LogIn lgIn = new LogIn();
         System.out.println("HELLO DEALER MANAGER");
         String[] options = {"Add new dealer", "Search a dealer", "remove a dealer", "Update a dealer", "Print all dealers", "Print Un-continuing dealers", "Print Continuing dealers", "Write to file", "Logout", "Exit Program"};
         Menu menu = new Menu(options);
-        DealerList dList = new DealerList(logInObj);
+        DealerList dList = new DealerList();
         dList.iniWithFile();
         boolean res = false;
         boolean success = false;
@@ -95,12 +95,12 @@ public class MenuManagement {
         System.out.println("Finish");
     }
 
-    public static void deliveriManagement(LogIn logInObj) throws IOException {
+    public static void deliveriManagement() throws IOException {
         LogIn lgIn = new LogIn();
         System.out.println("HELLO DELIVERIES MANAGER");
         String[] options = {"Add new deliveri", "Search a deliveri", "remove a deliveri", "Update a deliveri", "Print all deliveri", "Print Un-continuing deliveri", "Print Continuing deliveri", "Write to file", "Logout", "Exit Program"};
         Menu menu = new Menu(options);
-        DeliveriList dList = new DeliveriList(logInObj);
+        DeliveriList dList = new DeliveriList();
         dList.iniWithFile();
         boolean res = false;
         boolean success = false;
@@ -172,12 +172,12 @@ public class MenuManagement {
         System.out.println("Finish");
     }
 
-    public static void accountManagement(LogIn logInObj) throws IOException {
+    public static void accountManagement() throws IOException {
         LogIn lgIn = new LogIn();
         System.out.println("HELLO ACCOUNT MANAGER");
         String[] options = {"Add new Account", "Search a Account by accName", "Remove a Account by accName", "Update Account by accName", "Print all Account", "Save file", "Logout", "Exit Program"};
         Menu menu = new Menu(options);
-        AccountList aList = new AccountList(logInObj);
+        AccountList aList = new AccountList();
         aList.iniWithFile();
         boolean res = false;
         boolean success = false;

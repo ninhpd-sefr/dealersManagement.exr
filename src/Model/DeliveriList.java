@@ -19,11 +19,10 @@ public class DeliveriList extends ArrayList<Deliveri> {
     private String dataFile = "";
     boolean changed = false; // whether data in the list changed or not 
 
-    public DeliveriList(LogIn loginObj) {
-        super();
-        this.logInObj = loginObj;
+    public DeliveriList() {
     }
 
+    
     private void loadDeliveriFromFile() throws IOException {
         List<String> readDeliveri = MyTool.readLinesFromFile(dataFile);
         for (String element : readDeliveri) {
@@ -39,7 +38,7 @@ public class DeliveriList extends ArrayList<Deliveri> {
     }
 
     public DeliveriList getContinuingList() {
-        DeliveriList result = new DeliveriList(logInObj);
+        DeliveriList result = new DeliveriList();
         for (Deliveri thi : this) {
             if (thi.isContinuing() == true) {
                 result.add(thi);
@@ -49,7 +48,7 @@ public class DeliveriList extends ArrayList<Deliveri> {
     }
 
     public DeliveriList getUnContinuingList() {
-        DeliveriList result = new DeliveriList(logInObj);
+        DeliveriList result = new DeliveriList();
         for (Deliveri thi : this) {
             if (thi.isContinuing() == false) {
                 result.add(thi);

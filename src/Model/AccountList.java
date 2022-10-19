@@ -28,10 +28,10 @@ public class AccountList extends ArrayList<Account> {
     private String dataFile = "";
     boolean changed = false;
 
-    public AccountList(LogIn loginObj) {
-        super();
-        this.logInObj = loginObj;
+    public AccountList() {
     }
+
+    
 
     private void loadAccountFromFile() throws IOException {
         List<String> readAccount = MyTool.readLinesFromFile(dataFile);

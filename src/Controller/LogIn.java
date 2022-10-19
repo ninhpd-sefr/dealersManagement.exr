@@ -47,13 +47,12 @@ public class LogIn {
             }
         } while (cont);
         System.out.println("***********Login success***********");
-        LogIn logInObj = new LogIn(acc);
         if (acc.getRole().equalsIgnoreCase("ACC-1")) {
-            dealerManagement(logInObj);
+            dealerManagement();
         } else if (acc.getRole().equalsIgnoreCase("ACC-2")) {
-            deliveriManagement(logInObj);
+            deliveriManagement();
         } else if (acc.getRole().equalsIgnoreCase("BOSS")) {
-            accountManagement(logInObj);
+            accountManagement();
         }
     }
 }
