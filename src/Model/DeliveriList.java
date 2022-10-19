@@ -104,7 +104,8 @@ public class DeliveriList extends ArrayList<Deliveri> {
         changed = true;
     }
 
-    public void removeDeliveri() {
+    public boolean removeDeliveri() {
+        boolean success = false;
         int pos;
         System.out.println("Enter ID to remove Deliveri");
         String IdDeliveri = sc.nextLine().toUpperCase();
@@ -115,10 +116,14 @@ public class DeliveriList extends ArrayList<Deliveri> {
             this.remove(pos);
             System.out.println("Removed");
             changed = true;
+            success = true;
         }
+        return success;
     }
 
-    public void updateDeliveri() {
+    public boolean updateDeliveri() {
+        boolean success = false;
+
         System.out.println("Deliveri's ID needs updating: ");
         String ID = MyTool.sc.nextLine().toUpperCase();
         int pos = searchDeliveri(ID);
@@ -147,7 +152,10 @@ public class DeliveriList extends ArrayList<Deliveri> {
                 d.setPhone(phone);
                 changed = true;
             }
+            success = true;
+
         }
+        return success;
 
     }
 

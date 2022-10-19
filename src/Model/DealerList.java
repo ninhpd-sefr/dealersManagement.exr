@@ -103,7 +103,8 @@ public class DealerList extends ArrayList<Dealer> {
         changed = true;
     }
 
-    public void removeDealer() {
+    public boolean removeDealer() {
+        boolean success = false;
         int pos;
         System.out.println("Dealer's ID needs updating: ");
         String ID = MyTool.sc.nextLine().toUpperCase();
@@ -114,10 +115,14 @@ public class DealerList extends ArrayList<Dealer> {
             this.remove(pos);
             System.out.println("Removed");
             changed = true;
+            success = true;
         }
+        
+        return success;
     }
 
-    public void updateDealer() {
+    public boolean updateDealer() {
+        boolean success = false;
         System.out.println("Dealer's ID needs updating: ");
         String ID = MyTool.sc.nextLine().toUpperCase();
         int pos = searchDealer(ID);
@@ -147,8 +152,10 @@ public class DealerList extends ArrayList<Dealer> {
                 changed = true;
             }
             d.setContinuing(true);
+            success = true;
             System.out.println("updated");
         }
+        return success;
 
     }
 

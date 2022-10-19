@@ -82,14 +82,15 @@ public class AccountList extends ArrayList<Account> {
         } while (pos >= 0);
 
         pwd = MyTool.readNonBlank("Enter your passWord");
-        role = MyTool.readNonBlank("Enter your Role");
+        role = MyTool.inputRole("Enter your Role");
         Account acc = new Account(accName, pwd, role);
         this.add(acc);
         System.out.println("New account has been added");
         changed = true;
     }
 
-    public void removeAcount() {
+    public boolean removeAcount() {
+        boolean success = false;
         int pos;
         String accName;
         accName = MyTool.readNonBlank("Enter your account name: ");
@@ -100,10 +101,13 @@ public class AccountList extends ArrayList<Account> {
             this.remove(pos);
             System.out.println("Removed");
             changed = true;
+            success = true;
         }
+        return success;
     }
 
-    public void updateAccount() {
+    public boolean updateAccount() {
+        boolean success = false;
         int pos;
         String accName;
         accName = MyTool.readNonBlank("Enter your account name: ");
@@ -114,18 +118,20 @@ public class AccountList extends ArrayList<Account> {
             Account acc = this.get(pos);
             String newPwd = "";
             String newRole = "";
-            newPwd = MyTool.readNonBlank("Enter your passWord");
+            newPwd = MyTool.readNonSpace("Enter your passWord");
             if (!newPwd.isEmpty()) {
                 acc.setPwd(newPwd);
                 changed = true;
             }
-            newRole = inputRole("Enter your role");
+            newRole = MyTool.updateRole("Enter your role");
             if (!newRole.isEmpty()) {
                 acc.setRole(newRole);
                 changed = true;
             }
+            success = true;
             System.out.println("updated");
         }
+        return success;
 
     }
 

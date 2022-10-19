@@ -27,6 +27,7 @@ public class MenuManagement {
         DealerList dList = new DealerList(logInObj);
         dList.iniWithFile();
         boolean res = false;
+        boolean success = false;
         int choice = 0;
         do {
             choice = menu.getChoice("------------Manageing dealers----------");
@@ -42,17 +43,21 @@ public class MenuManagement {
                     dList.searchDealer();
                     break;
                 case 3:
-                    dList.removeDealer();
-                    res = MyTool.readBool("Data changed. Write to file?");
-                    if (res == true) {
-                        dList.writeDealerToFile();
+                    success = dList.removeDealer();
+                    if (success) {
+                        res = MyTool.readBool("Data changed. Write to file?");
+                        if (res == true) {
+                            dList.writeDealerToFile();
+                        }
                     }
                     break;
                 case 4:
-                    dList.updateDealer();
-                    res = MyTool.readBool("Data changed. Write to file?");
-                    if (res == true) {
-                        dList.writeDealerToFile();
+                    success = dList.updateDealer();
+                    if (success) {
+                        res = MyTool.readBool("Data changed. Write to file?");
+                        if (res == true) {
+                            dList.writeDealerToFile();
+                        }
                     }
                     break;
                 case 5:
@@ -98,6 +103,7 @@ public class MenuManagement {
         DeliveriList dList = new DeliveriList(logInObj);
         dList.iniWithFile();
         boolean res = false;
+        boolean success = false;
         int choice = 0;
         do {
             choice = menu.getChoice("------------Manageing deliveris----------");
@@ -114,17 +120,21 @@ public class MenuManagement {
 
                     break;
                 case 3:
-                    dList.removeDeliveri();
-                    res = MyTool.readBool("Data changed. Write to file?");
-                    if (res == true) {
-                        dList.writeDeliveriToFile();
+                    success = dList.removeDeliveri();
+                    if (success) {
+                        res = MyTool.readBool("Data changed. Write to file?");
+                        if (res == true) {
+                            dList.writeDeliveriToFile();
+                        }
                     }
                     break;
                 case 4:
-                    dList.updateDeliveri();
-                    res = MyTool.readBool("Data changed. Write to file?");
-                    if (res == true) {
-                        dList.writeDeliveriToFile();
+                    success = dList.updateDeliveri();
+                    if (success) {
+                        res = MyTool.readBool("Data changed. Write to file?");
+                        if (res == true) {
+                            dList.writeDeliveriToFile();
+                        }
                     }
                     break;
                 case 5:
@@ -170,6 +180,7 @@ public class MenuManagement {
         AccountList aList = new AccountList(logInObj);
         aList.iniWithFile();
         boolean res = false;
+        boolean success = false;
         int choice = 0;
         do {
             choice = menu.getChoice("------------Manageing Accounts----------");
@@ -186,17 +197,21 @@ public class MenuManagement {
                     ;
                     break;
                 case 3:
-                    aList.removeAcount();
-                    res = MyTool.readBool("Data changed. Write to file?");
-                    if (res == true) {
-                        aList.writeAccountToFile();
+                    success = aList.removeAcount();
+                    if (success) {
+                        res = MyTool.readBool("Data changed. Write to file?");
+                        if (res == true) {
+                            aList.writeAccountToFile();
+                        }
                     }
                     break;
                 case 4:
-                    aList.updateAccount();
-                    res = MyTool.readBool("Data changed. Write to file?");
-                    if (res == true) {
-                        aList.writeAccountToFile();
+                    success = aList.updateAccount();
+                    if (success) {
+                        res = MyTool.readBool("Data changed. Write to file?");
+                        if (res == true) {
+                            aList.writeAccountToFile();
+                        }
                     }
                     break;
                 case 5:
